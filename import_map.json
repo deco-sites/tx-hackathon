@@ -1,5 +1,7 @@
 {
   "imports": {
+    "deco-sites/tx-hackathon/": "./",
+
     "deco-sites/black-friday-lp/": "./",
 
     "$store/": "./",
