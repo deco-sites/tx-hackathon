@@ -6,7 +6,9 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
-import Layout from "$store/components/LandingPage/Layout.tsx";
+import Hotjar from "$store/islands/Hotjar.tsx";
+import Freshchat from "$store/islands/Freshchat.tsx";
+import Nudgify from "$store/islands/Nudgify.tsx";
 
 export interface NavItem {
   label: string;
@@ -49,6 +51,8 @@ export interface Props {
   /** @title Logo */
   logo?: { src: ImageWidget; alt: string };
   irParaOSite: string;
+  siteId: string;
+  version?: number;
 }
 
 function Header({
@@ -59,6 +63,8 @@ function Header({
   suggestions,
   logo,
   irParaOSite,
+  siteId,
+  version,
 }: Props) {
   const platform = usePlatform();
   const searchbar = { ..._searchbar, products, suggestions };
@@ -78,6 +84,9 @@ function Header({
           </div>
         </Drawers>
       </header>
+      <Hotjar siteId={siteId} version={version} />
+      <Freshchat snippet="<script src='//eu.fw-cdn.com/12535052/574280.js' chat='true'>" />
+      <Nudgify siteId="510c046b-0f43-4a07-9867-df7216624f22" />
     </>
   );
 }
